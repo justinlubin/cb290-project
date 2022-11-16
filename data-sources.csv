@@ -1,0 +1,16 @@
+name,url
+tle1-barcodes.tsv,https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4160nnn/GSM4160577/suppl/GSM4160577_CL37Kbarcodes.tsv.gz
+tle1-features.tsv,https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4160nnn/GSM4160577/suppl/GSM4160577_CL37Kfeatures.tsv.gz
+tle1-matrix.mtx,https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4160nnn/GSM4160577/suppl/GSM4160577_CL37Kmatrix.mtx.gz
+tle2-barcodes.tsv,https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4160nnn/GSM4160578/suppl/GSM4160578_CL48Kbarcodes.tsv.gz
+tle2-features.tsv,https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4160nnn/GSM4160578/suppl/GSM4160578_CL48Kfeatures.tsv.gz
+tle2-matrix.mtx,https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4160nnn/GSM4160578/suppl/GSM4160578_CL48Kmatrix.mtx.gz
+tle3-barcodes.tsv,ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4160nnn/GSM4160579/suppl/GSM4160579_172barcodes.tsv.gz
+tle3-features.tsv,https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4160nnn/GSM4160579/suppl/GSM4160579_172features.tsv.gz
+tle3-matrix.mtx,https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4160nnn/GSM4160579/suppl/GSM4160579_172matrix.mtx.gz
+tle4-barcodes.tsv,https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4160nnn/GSM4160580/suppl/GSM4160580_441barcodes.tsv.gz
+tle4-features.tsv,https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4160nnn/GSM4160580/suppl/GSM4160580_441features.tsv.gz
+tle4-matrix.mtx,https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4160nnn/GSM4160580/suppl/GSM4160580_441matrix.mtx.gz
+tle5-barcodes.tsv,https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4160nnn/GSM4160581/suppl/GSM4160581_476barcodes.tsv.gz
+tle5-features.tsv,https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4160nnn/GSM4160581/suppl/GSM4160581_476features.tsv.gz
+tle5-matrix.mtx,https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4160nnn/GSM4160581/suppl/GSM4160581_476matrix.mtx.gz
