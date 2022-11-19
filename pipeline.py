@@ -1,5 +1,8 @@
 #%% Import packages
 
+
+# TODO: normalize to tpm, handle batch effects
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -21,13 +24,15 @@ healthy_metadata = pd.DataFrame(
 separated_data = [healthy]
 separated_metadata = [healthy_metadata]
 
+N = 400
+
 for i in range(1, 6):
     prefix = f"cached-data/tle{i}-"
     
     barcodes = []
     with open(prefix + "barcodes.tsv") as barcodes_file:
         for row in csv.reader(barcodes_file, delimiter="\t"):
-            barcodes.append(row[0])
+            barcodes.append(f"Sample{i}_{row[0]}")
             
     features = []
     with open(prefix + "features.tsv") as features_file:
@@ -38,18 +43,53 @@ for i in range(1, 6):
     
     df = pd.DataFrame.sparse.from_spmatrix(
         counts, index=barcodes, columns=features
-    )
+    ).drop(columns=['RGS5',
+     'TBCE',
+     'PDE11A',
+     'LINC01238',
+     'PRSS50',
+     'CYB561D2',
+     'ATXN7',
+     'TXNRD3NB',
+     'CCDC39',
+     'MATR3',
+     'SOD2',
+     'POLR2J3',
+     'ABCF2',
+     'TMSB15B',
+     'PINX1',
+     'LINC01505',
+     'IGF2',
+     'HSPA14',
+     'EMG1',
+     'DIABLO',
+     'LINC02203',
+     'COG8',
+     'SCO2',
+     'H2BFS']).head(N)
     
     mdf = pd.DataFrame(
         {"Sample": np.repeat(i, len(barcodes)), "Healthy": np.repeat(False, len(barcodes))},
         index=barcodes,
-    )
+    ).head(N)
     
     separated_data.append(df)
     separated_metadata.append(mdf)
     
     
 #%% Merge
+
+def duplicates(a):
+    seen = set()
+    dupes = []
+    
+    for x in a:
+        if x in seen:
+            dupes.append(x)
+        else:
+            seen.add(x)
+    
+    return dupes
 
 data = pd.concat(separated_data, join="inner")
 metadata = pd.concat(separated_metadata)
@@ -66,7 +106,7 @@ data_dr = pd.DataFrame(
 
 #%% Sample
 
-sample = data_dr.sample(9000)
+sample = data_dr #.sample(9000)
 
 #%% Plot principal components
 
@@ -95,4 +135,6 @@ m = data_umap.join(metadata)
 #%% Plot UMAP
 
 plt.figure()
-plt.scatter(m.iloc[:,0], m.iloc[:,1], c=m["Sample"], marker=".", s=1)
+plt.scatter(m.iloc[:,0], m.iloc[:,1], c=m["Sample"]==-1, marker=".", s=1)
+
+# %%
