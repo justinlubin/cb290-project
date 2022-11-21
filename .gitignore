@@ -1,3 +1,1 @@
-cached-data/*.tsv
-cached-data/*.mtx
-cached-data/*.csv
+*/out/*
