@@ -25,7 +25,7 @@ raw_soft_data = None
 with urllib.request.urlopen(soft_url) as soft_gz_file:
     raw_soft_data = gzip.GzipFile(fileobj=soft_gz_file).read().decode("utf-8")
 
-#%% Iterate throug healthy GSE data
+#%% Iterate through healthy GSE data
 
 samples = {}
 
@@ -51,7 +51,7 @@ for _, sample in samples.items():
             gzip.GzipFile(fileobj=data_gz_file).read().decode("utf-8")
         )
 
-#%% Make healthy matrix columns
+#%% Make healthy count matrix columns
 
 first_name = next(iter(samples))
 
@@ -67,7 +67,7 @@ for sample_name, sample in samples.items():
         counts.append(int(line.split("\t", 2)[1].strip()))
     columns[sample_name] = counts
 
-#%% Make healthy matrix
+#%% Make healthy count matrix
 
 data = (
     pd.DataFrame(columns, index=genes)
@@ -75,6 +75,22 @@ data = (
     .drop(columns=["no_feature", "ambiguous", "alignment_not_unique"])
 )
 
-#%% Save healthy matrix
+#%% Make healthy metadata
 
-data.to_csv("out/healthy.csv")
+metadata_columns = {}
+
+for key in samples[first_name]:
+    if key in ["raw_data", "url"]:
+        continue
+    metadata_columns[key] = []
+
+for sample_name, sample in samples.items():
+    for key in metadata_columns:
+        metadata_columns[key].append(sample[key])
+
+metadata = pd.DataFrame(metadata_columns, index=samples.keys())
+
+#%% Save healthy data and metadata
+
+data.to_csv("out/healthy-data.csv")
+metadata.to_csv("out/healthy-metadata.csv")

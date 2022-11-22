@@ -8,21 +8,18 @@ import csv
 
 #%% Load healthy data and create metadata
 
-healthy = pd.read_csv("../00-download/out/healthy.csv", index_col=0)
-healthy_metadata = pd.DataFrame(
-    {
-        "Sample": np.repeat(0, len(healthy)),
-        "Healthy": np.repeat(True, len(healthy)),
-    },
-    index=healthy.index,
+healthy_data = pd.read_csv("../00-download/out/healthy-data.csv", index_col=0)
+healthy_metadata = pd.read_csv(
+    "../00-download/out/healthy-metadata.csv", index_col=0
 )
+
+healthy_metadata["Sample"] = np.repeat(0, len(healthy_metadata))
+healthy_metadata["Healthy"] = np.repeat(True, len(healthy_metadata))
 
 #%% Load TLE data and metadata
 
-separated_data = [healthy]
+separated_data = [healthy_data]
 separated_metadata = [healthy_metadata]
-
-N = 400
 
 for i in range(1, 6):
     prefix = f"../00-download/out/tle{i}-"
@@ -39,39 +36,35 @@ for i in range(1, 6):
 
     counts = scipy.io.mmread(prefix + "matrix.mtx").transpose()
 
-    df = (
-        pd.DataFrame.sparse.from_spmatrix(
-            counts, index=barcodes, columns=features
-        )
-        .drop(
-            columns=[
-                "RGS5",
-                "TBCE",
-                "PDE11A",
-                "LINC01238",
-                "PRSS50",
-                "CYB561D2",
-                "ATXN7",
-                "TXNRD3NB",
-                "CCDC39",
-                "MATR3",
-                "SOD2",
-                "POLR2J3",
-                "ABCF2",
-                "TMSB15B",
-                "PINX1",
-                "LINC01505",
-                "IGF2",
-                "HSPA14",
-                "EMG1",
-                "DIABLO",
-                "LINC02203",
-                "COG8",
-                "SCO2",
-                "H2BFS",
-            ]
-        )
-        .head(N)
+    df = pd.DataFrame.sparse.from_spmatrix(
+        counts, index=barcodes, columns=features
+    ).drop(
+        columns=[
+            "RGS5",
+            "TBCE",
+            "PDE11A",
+            "LINC01238",
+            "PRSS50",
+            "CYB561D2",
+            "ATXN7",
+            "TXNRD3NB",
+            "CCDC39",
+            "MATR3",
+            "SOD2",
+            "POLR2J3",
+            "ABCF2",
+            "TMSB15B",
+            "PINX1",
+            "LINC01505",
+            "IGF2",
+            "HSPA14",
+            "EMG1",
+            "DIABLO",
+            "LINC02203",
+            "COG8",
+            "SCO2",
+            "H2BFS",
+        ]
     )
 
     mdf = pd.DataFrame(
@@ -80,7 +73,7 @@ for i in range(1, 6):
             "Healthy": np.repeat(False, len(barcodes)),
         },
         index=barcodes,
-    ).head(N)
+    )
 
     separated_data.append(df)
     separated_metadata.append(mdf)
@@ -90,8 +83,12 @@ for i in range(1, 6):
 
 data = pd.concat(separated_data, join="inner")
 metadata = pd.concat(separated_metadata)
+genes = pd.DataFrame({"Genes": data.columns.values})
 
 #%% Save data and metadata
 
-data.to_csv("out/combined-data.csv")
+scipy.io.mmwrite("out/combined-data.mtx", data.sparse.to_coo())
 metadata.to_csv("out/combined-metadata.csv")
+genes.to_csv("out/combined-genes.csv")
+
+# %%
