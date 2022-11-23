@@ -67,11 +67,16 @@ for i in range(1, 6):
         ]
     )
 
+    mdf_columns = {}
+
+    # for key in healthy_metadata.columns:
+    #     mdf_columns[key] = np.repeat(None, len(barcodes))
+
+    mdf_columns["Sample"] = np.repeat(i, len(barcodes))
+    mdf_columns["Healthy"] = np.repeat(False, len(barcodes))
+
     mdf = pd.DataFrame(
-        {
-            "Sample": np.repeat(i, len(barcodes)),
-            "Healthy": np.repeat(False, len(barcodes)),
-        },
+        mdf_columns,
         index=barcodes,
     )
 
@@ -81,14 +86,22 @@ for i in range(1, 6):
 
 #%% Merge data and metadata
 
-data = pd.concat(separated_data, join="inner")
-metadata = pd.concat(separated_metadata)
-genes = pd.DataFrame({"Genes": data.columns.values})
+genes = np.intersect1d(separated_data[0].columns, separated_data[1].columns)
+
+intersected_healthy_data = healthy_data[genes]
+intersected_tle_data = pd.concat(separated_data[1:], join="inner")[genes]
+
+tle_metadata = pd.concat(separated_metadata[1:])
+
 
 #%% Save data and metadata
 
-scipy.io.mmwrite("out/combined-data.mtx", data.sparse.to_coo())
-metadata.to_csv("out/combined-metadata.csv")
-genes.to_csv("out/combined-genes.csv")
+# intersected_healthy_data.to_csv("out/combined-healthy-data.csv")
+# healthy_metadata.to_csv("out/combined-healthy-metadata.csv")
 
-# %%
+# scipy.io.mmwrite(
+#     "out/combined-tle-data.mtx", intersected_tle_data.sparse.to_coo()
+# )
+# tle_metadata.to_csv("out/combined-tle-metadata.csv")
+
+pd.DataFrame({"Gene": genes}).to_csv("out/combined-genes.csv", index=False)
