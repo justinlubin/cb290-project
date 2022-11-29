@@ -19,29 +19,70 @@ metadata = pd.read_csv(
     "../02-clean/out/filtered-metadata.csv", header=0, index_col=0
 )
 
-#%% Normalize library size
-
-normalized_data = (
-    (data.div(data.sum(axis=1), axis=0) * 1_000_000).round().astype(int)
-)
-
-#%% Train PCA
-
-pca = sklearn.decomposition.PCA(n_components=50).fit(normalized_data)
-
-#%% Print out PCA stats
-
-print("PCA explained variance:", pca.explained_variance_ratio_)
-print("PCA explained variance (sum):", sum(pca.explained_variance_ratio_))
-
-#%% Apply PCA
-
-data_pca = pd.DataFrame(pca.transform(data), index=data.index)
-
-#%% Plot PCA
+#%% Set healthy and TLE indexes
 
 healthy_idx = metadata["Sample"] == 0
 tle_idx = metadata["Sample"] > 0
+
+#%% Normalize library size
+
+normalized_data = scprep.transform.sqrt(
+    scprep.normalize.library_size_normalize(data)
+)
+
+#%% Train PCA on healthy cells
+
+pca_healthy = sklearn.decomposition.PCA(n_components=50).fit(
+    normalized_data[healthy_idx]
+)
+
+print("Healthy PCA explained variance:", pca_healthy.explained_variance_ratio_)
+print(
+    "Healthy PCA explained variance (sum):",
+    sum(pca_healthy.explained_variance_ratio_),
+)
+
+#%% Train PCA on TLE cells
+
+pca_tle = sklearn.decomposition.PCA(n_components=50).fit(
+    normalized_data[tle_idx]
+)
+
+print("TLE PCA explained variance:", pca_tle.explained_variance_ratio_)
+print(
+    "TLE PCA explained variance (sum):", sum(pca_tle.explained_variance_ratio_)
+)
+
+#%% Apply PCA
+
+data_healthy_pca = pd.DataFrame(
+    pca_healthy.transform(data[healthy_idx]), index=data[healthy_idx].index
+)
+data_tle_pca = pd.DataFrame(
+    pca_tle.transform(data[tle_idx]), index=data[tle_idx].index
+)
+
+#%% Plot Healthy PCA
+
+fig, ax = plt.subplots(1, 1)
+ax.scatter(
+    data_healthy_pca.iloc[:, 0],
+    data_healthy_pca.iloc[:, 1],
+    label="Healthy",
+)
+ax.legend()
+
+#%% Plot TLE PCA
+
+fig, ax = plt.subplots(1, 1)
+ax.scatter(
+    data_tle_pca.iloc[:, 0],
+    data_tle_pca.iloc[:, 1],
+    label="TLE",
+)
+ax.legend()
+
+#%% Plot PCA
 
 fig, ax = plt.subplots(1, 1)
 ax.scatter(
