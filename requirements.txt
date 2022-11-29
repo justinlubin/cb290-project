@@ -4,3 +4,5 @@ scipy
 umap-learn
 sklearn
 matplotlib
+phate
+scprep
