@@ -80,9 +80,13 @@ ax.axvline(healthy_cell_high, color="red")
 #%% Plot healthy library size and set cut offs
 
 tle_cell_low = 200
+tle_cell_high = 2000
 
 fig, ax = plt.subplots(1, 1)
-tle_idx = (tle_metadata["TrimmedLibrarySize"] > tle_cell_low).values
+tle_idx = (
+    (tle_metadata["TrimmedLibrarySize"] >= tle_cell_low)
+    & (tle_metadata["TrimmedLibrarySize"] <= tle_cell_high)
+).values
 ax.hist(
     tle_metadata[tle_idx]["TrimmedLibrarySize"],
     bins=50,
