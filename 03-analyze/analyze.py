@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+import scipy.stats
 import sklearn.decomposition
 import sklean.cluster
 import umap
@@ -370,10 +371,33 @@ astrocytes_healthy = normalized_data_healthy[
 ]
 astrocytes_tle = normalized_data_tle[data_tle["GFAP"] > 1]
 
-# positive means left greater, negative means right greater
-de_report = scprep.stats.differential_expression(
-    astrocytes_healthy, astrocytes_tle, measure="ttest"
+de_report_data = {"statistic": [], "corrected_pvalue": [], "fold_change": []}
+num_genes = len(astrocytes_healthy.columns)
+
+# Limitation: t-test not appropriate for counts
+for gene in astrocytes_healthy.columns:
+    result = scipy.stats.ttest_ind(
+        astrocytes_healthy[gene], astrocytes_tle[gene]
+    )
+    de_report_data["statistic"].append(result.statistic)
+    de_report_data["corrected_pvalue"].append(result.pvalue * num_genes)
+    de_report_data["fold_change"].append(
+        astrocytes_tle[gene].mean() / (astrocytes_healthy[gene].mean() + 0.01)
+    )
+
+de_report = pd.DataFrame(
+    de_report_data, index=astrocytes_healthy.columns.values
 )
 
-top_genes = de_report.sort_values(by="rank")["ttest"].head(n=100)
-print(top_genes)
+# %%
+
+fig, ax = plt.subplots(1, 1)
+ax.scatter(
+    np.log2(de_report["fold_change"]),
+    -np.log10(de_report["corrected_pvalue"]),
+    s=1,
+)
+ax.hlines(-np.log10(0.05))
+ax.legend()
+
+# %%
