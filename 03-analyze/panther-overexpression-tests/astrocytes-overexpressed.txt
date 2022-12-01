@@ -1,0 +1,65 @@
+
+
+
+
+
+Analysis Type:	PANTHER Overrepresentation Test (Released 20221013)
+Annotation Version and Release Date:	GO Ontology database DOI:  10.5281/zenodo.6799722 Released 2022-07-01
+Analyzed List:	significant-astrocyte-overexpressed-genes.csv (Homo sapiens)
+Reference List:	astrocyte-background-genes.csv (Homo sapiens)
+Test Type:	FISHER
+Correction:	FDR
+GO biological process complete	astrocyte-background-genes.csv - REFLIST (9025)	significant-astrocyte-overexpressed-genes.csv (86)	significant-astrocyte-overexpressed-genes.csv (expected)	significant-astrocyte-overexpressed-genes.csv (over/under)	significant-astrocyte-overexpressed-genes.csv (fold Enrichment)	significant-astrocyte-overexpressed-genes.csv (raw P-value)	significant-astrocyte-overexpressed-genes.csv (FDR)
+antigen processing and presentation of endogenous peptide antigen via MHC class I via ER pathway, TAP-independent (GO:0002486)	5	3	.05	+	62.97	4.39E-05	1.27E-02
+antigen processing and presentation of endogenous peptide antigen via MHC class I via ER pathway (GO:0002484)	5	3	.05	+	62.97	4.39E-05	1.25E-02
+cytoplasmic translation (GO:0002181)	113	59	1.08	+	54.79	3.22E-85	4.39E-81
+antigen processing and presentation of endogenous peptide antigen via MHC class I (GO:0019885)	9	4	.09	+	46.64	4.96E-06	1.73E-03
+negative regulation of ubiquitin protein ligase activity (GO:1904667)	8	3	.08	+	39.35	1.27E-04	3.46E-02
+antigen processing and presentation of endogenous peptide antigen (GO:0002483)	11	4	.10	+	38.16	9.33E-06	3.03E-03
+ribosomal small subunit assembly (GO:0000028)	16	5	.15	+	32.79	1.20E-06	4.69E-04
+antigen processing and presentation of endogenous antigen (GO:0019883)	13	4	.12	+	32.29	1.60E-05	5.08E-03
+ribosomal large subunit assembly (GO:0000027)	18	5	.17	+	29.15	1.96E-06	7.42E-04
+ribosome assembly (GO:0042255)	45	10	.43	+	23.32	6.80E-11	3.71E-08
+ribosomal large subunit biogenesis (GO:0042273)	58	12	.55	+	21.71	1.55E-12	9.17E-10
+antigen processing and presentation of peptide antigen via MHC class I (GO:0002474)	20	4	.19	+	20.99	6.81E-05	1.89E-02
+translation (GO:0006412)	317	61	3.02	+	20.19	4.60E-66	3.14E-62
+peptide biosynthetic process (GO:0043043)	330	61	3.14	+	19.40	4.18E-65	1.90E-61
+positive regulation of signal transduction by p53 class mediator (GO:1901798)	24	4	.23	+	17.49	1.27E-04	3.41E-02
+maturation of LSU-rRNA (GO:0000470)	25	4	.24	+	16.79	1.47E-04	3.85E-02
+peptide metabolic process (GO:0006518)	399	62	3.80	+	16.31	3.24E-62	1.10E-58
+ribosomal small subunit biogenesis (GO:0042274)	58	9	.55	+	16.28	1.06E-08	4.67E-06
+amide biosynthetic process (GO:0043604)	396	61	3.77	+	16.17	9.94E-61	2.71E-57
+cellular amide metabolic process (GO:0043603)	544	62	5.18	+	11.96	1.46E-54	3.32E-51
+cellular macromolecule biosynthetic process (GO:0034645)	554	62	5.28	+	11.74	4.14E-54	8.05E-51
+rRNA processing (GO:0006364)	159	17	1.52	+	11.22	4.18E-13	2.71E-10
+ribosome biogenesis (GO:0042254)	218	22	2.08	+	10.59	2.62E-16	1.88E-13
+rRNA metabolic process (GO:0016072)	176	17	1.68	+	10.14	1.90E-12	1.08E-09
+non-membrane-bounded organelle assembly (GO:0140694)	184	13	1.75	+	7.41	3.31E-08	1.37E-05
+organonitrogen compound biosynthetic process (GO:1901566)	884	62	8.42	+	7.36	1.79E-42	3.06E-39
+ribonucleoprotein complex biogenesis (GO:0022613)	338	22	3.22	+	6.83	1.19E-12	7.40E-10
+ncRNA processing (GO:0034470)	266	17	2.53	+	6.71	8.35E-10	4.21E-07
+ribonucleoprotein complex assembly (GO:0022618)	158	10	1.51	+	6.64	3.68E-06	1.36E-03
+macromolecule biosynthetic process (GO:0009059)	980	62	9.34	+	6.64	6.59E-40	9.98E-37
+ribonucleoprotein complex subunit organization (GO:0071826)	165	10	1.57	+	6.36	5.31E-06	1.76E-03
+cellular nitrogen compound biosynthetic process (GO:0044271)	1026	61	9.78	+	6.24	1.67E-37	2.27E-34
+ncRNA metabolic process (GO:0034660)	336	17	3.20	+	5.31	2.36E-08	1.00E-05
+gene expression (GO:0010467)	1463	66	13.94	+	4.73	1.20E-34	1.48E-31
+cellular biosynthetic process (GO:0044249)	1551	62	14.78	+	4.19	1.32E-28	1.50E-25
+organic substance biosynthetic process (GO:1901576)	1587	62	15.12	+	4.10	4.77E-28	5.00E-25
+biosynthetic process (GO:0009058)	1615	62	15.39	+	4.03	1.26E-27	1.23E-24
+cellular macromolecule metabolic process (GO:0044260)	1619	62	15.43	+	4.02	1.45E-27	1.32E-24
+RNA processing (GO:0006396)	611	19	5.82	+	3.26	4.66E-06	1.67E-03
+cellular nitrogen compound metabolic process (GO:0034641)	2199	64	20.95	+	3.05	4.06E-22	3.26E-19
+protein metabolic process (GO:0019538)	2360	66	22.49	+	2.93	2.93E-22	2.50E-19
+organonitrogen compound metabolic process (GO:1901564)	2955	66	28.16	+	2.34	1.10E-16	8.30E-14
+macromolecule metabolic process (GO:0043170)	3478	68	33.14	+	2.05	3.50E-14	2.39E-11
+nitrogen compound metabolic process (GO:0006807)	3960	67	37.74	+	1.78	2.11E-10	1.11E-07
+cellular metabolic process (GO:0044237)	3958	66	37.72	+	1.75	9.82E-10	4.78E-07
+primary metabolic process (GO:0044238)	4220	68	40.21	+	1.69	1.33E-09	6.25E-07
+organic substance metabolic process (GO:0071704)	4399	69	41.92	+	1.65	2.94E-09	1.34E-06
+metabolic process (GO:0008152)	4620	69	44.02	+	1.57	4.61E-08	1.85E-05
+cellular process (GO:0009987)	7441	83	70.91	+	1.17	1.47E-04	3.79E-02
+protein modification process (GO:0036211)	1609	2	15.33	-	.13	2.20E-05	6.65E-03
+macromolecule modification (GO:0043412)	1732	2	16.50	-	.12	5.23E-06	1.78E-03
+phosphate-containing compound metabolic process (GO:0006796)	1095	0	10.43	-	 < 0.01	3.18E-05	9.41E-03
+phosphorus metabolic process (GO:0006793)	1117	0	10.64	-	 < 0.01	1.95E-05	6.04E-03

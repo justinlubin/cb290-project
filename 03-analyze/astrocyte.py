@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 import scipy.stats
 import sklearn.decomposition
-import sklean.cluster
+import sklearn.cluster
 import umap
 import phate
 import scprep
@@ -16,8 +16,6 @@ import scprep
 data = pd.read_csv(
     # "../02-clean/out/batch-corrected-data.csv"
     "../02-clean/out/filtered-data.csv",
-    header=0,
-    index_col=0,
     header=0,
     index_col=0,
 )
@@ -364,7 +362,7 @@ with open("out/tle-upregulated.csv", "w") as f:
 
 # LIMITATION: no cell type markers
 
-#%% Astrocyte comparison
+#%% Compute astrocyte differential expression
 
 astrocytes_healthy = normalized_data_healthy[
     metadata[healthy_idx]["cell type"] == "astrocytes"
@@ -389,15 +387,112 @@ de_report = pd.DataFrame(
     de_report_data, index=astrocytes_healthy.columns.values
 )
 
-# %%
+#%% Plot astrocyte differential expression
 
-fig, ax = plt.subplots(1, 1)
-ax.scatter(
-    np.log2(de_report["fold_change"]),
-    -np.log10(de_report["corrected_pvalue"]),
-    s=1,
-)
-ax.hlines(-np.log10(0.05))
+significant_idx = de_report["corrected_pvalue"] <= 0.5
+
+x_sig = np.log2(de_report[significant_idx]["fold_change"])
+y_sig = -np.log10(de_report[significant_idx]["corrected_pvalue"])
+
+x_insig = np.log2(de_report[~significant_idx]["fold_change"])
+y_insig = -np.log10(de_report[~significant_idx]["corrected_pvalue"])
+
+fig, ax = plt.subplots(1, 1, figsize=(12, 6))
+ax.scatter(x_sig, y_sig, s=1, c="red", label="Significant")
+ax.scatter(x_insig, y_insig, s=1, c="black", label="Not significant")
+ax.set_xlabel("log2(Fold change)")
+ax.set_ylabel("-log10(Bonferroni corrected p-value)")
 ax.legend()
 
-# %%
+# Annotate genes with low corrected p-value
+
+for gene, row in de_report[significant_idx].iterrows():
+    x = np.log2(row["fold_change"])
+    y = -np.log10(row["corrected_pvalue"])
+    if y > 22:
+        adjusted_x = x + 0.1
+        if gene == "PTPRS":
+            adjusted_x -= 0.8
+        if gene == "AASS":
+            adjusted_x -= 0.7
+        ax.annotate(gene, (adjusted_x, y + 0.1))
+
+#%% Save significant astrocyte differential expression
+
+de_report[significant_idx].sort_values(by="corrected_pvalue").to_csv(
+    "out/significant-astrocyte-differential-expression.csv"
+)
+
+np.savetxt(
+    "out/significant-astrocyte-overexpressed-genes.csv",
+    de_report[significant_idx & (de_report["fold_change"] > 1)]
+    .sort_values(by="corrected_pvalue")
+    .index.values,
+    delimiter="\n",
+    fmt="%s",
+)
+
+np.savetxt(
+    "out/significant-astrocyte-underexpressed-genes.csv",
+    de_report[significant_idx & (de_report["fold_change"] < 1)]
+    .sort_values(by="corrected_pvalue")
+    .index.values,
+    delimiter="\n",
+    fmt="%s",
+)
+
+#%%
+
+print(
+    "Number overexpressed in TLE:",
+    len(de_report[significant_idx & (de_report["fold_change"] > 1)]),
+)
+print(
+    "Percent of significant overexpressed in TLE:",
+    len(de_report[significant_idx & (de_report["fold_change"] > 1)])
+    / len(de_report[significant_idx]),
+)
+print(
+    "Number underexpressed in TLE:",
+    len(de_report[significant_idx & (de_report["fold_change"] < 1)]),
+)
+print(
+    "Percent of significant underexpressed in TLE:",
+    len(de_report[significant_idx & (de_report["fold_change"] < 1)])
+    / len(de_report[significant_idx]),
+)
+
+#%% Get astrocyte background genes
+
+astrocyte_healthy_gene_expr = astrocytes_healthy.sum(axis=0)
+astrocyte_tle_gene_expr = astrocytes_tle.sum(axis=0)
+
+astrocyte_healthy_gene_low = 1
+fig, ax = plt.subplots(1, 1)
+ax.hist(astrocyte_healthy_gene_expr, bins=50)
+ax.axvline(astrocyte_healthy_gene_low, color="red")
+ax.set_title("Astrocyte Healthy Gene Expression")
+
+astrocyte_tle_gene_low = 2
+fig, ax = plt.subplots(1, 1)
+ax.hist(astrocyte_tle_gene_expr, bins=50)
+ax.axvline(astrocyte_tle_gene_low, color="red")
+ax.set_title("Astrocyte TLE Gene Expression")
+
+nonlow_astrocyte_expression_idx = (
+    (astrocyte_healthy_gene_expr >= astrocyte_healthy_gene_low)
+    | (astrocyte_tle_gene_expr >= astrocyte_tle_gene_low)
+).values
+
+nonlow_astrocyte_genes = astrocytes_healthy.columns[
+    nonlow_astrocyte_expression_idx
+].values
+
+#%% Save astrocyte background genes
+
+np.savetxt(
+    "out/astrocyte-background-genes.csv",
+    nonlow_astrocyte_genes,
+    delimiter="\n",
+    fmt="%s",
+)

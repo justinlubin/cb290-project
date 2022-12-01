@@ -1,0 +1,90 @@
+
+
+
+
+
+Analysis Type:	PANTHER Overrepresentation Test (Released 20221013)
+Annotation Version and Release Date:	GO Ontology database DOI:  10.5281/zenodo.6799722 Released 2022-07-01
+Analyzed List:	Client Text Box Input (Homo sapiens)
+Reference List:	astrocyte-background-genes.csv (Homo sapiens)
+Test Type:	FISHER
+Correction:	FDR
+GO biological process complete	astrocyte-background-genes.csv - REFLIST (9025)	Client Text Box Input (1008)	Client Text Box Input (expected)	Client Text Box Input (over/under)	Client Text Box Input (fold Enrichment)	Client Text Box Input (raw P-value)	Client Text Box Input (FDR)
+acidic amino acid transport (GO:0015800)	26	12	2.90	+	4.13	2.25E-04	4.66E-02
+actin cytoskeleton reorganization (GO:0031532)	42	16	4.69	+	3.41	1.31E-04	3.02E-02
+dicarboxylic acid transport (GO:0006835)	40	15	4.47	+	3.36	2.42E-04	4.52E-02
+vascular transport (GO:0010232)	47	17	5.25	+	3.24	1.36E-04	3.09E-02
+transport across blood-brain barrier (GO:0150104)	47	17	5.25	+	3.24	1.36E-04	3.03E-02
+regulation of cell junction assembly (GO:1901888)	116	31	12.96	+	2.39	7.14E-05	2.08E-02
+central nervous system neuron differentiation (GO:0021953)	98	26	10.95	+	2.38	2.36E-04	4.53E-02
+vascular process in circulatory system (GO:0003018)	127	33	14.18	+	2.33	5.08E-05	1.57E-02
+cell junction assembly (GO:0034329)	158	41	17.65	+	2.32	6.80E-06	4.64E-03
+regulation of small GTPase mediated signal transduction (GO:0051056)	189	49	21.11	+	2.32	9.19E-07	2.51E-03
+cell-cell adhesion (GO:0098609)	249	56	27.81	+	2.01	6.69E-06	4.80E-03
+transmembrane receptor protein tyrosine kinase signaling pathway (GO:0007169)	227	51	25.35	+	2.01	1.74E-05	9.51E-03
+circulatory system process (GO:0003013)	218	47	24.35	+	1.93	1.05E-04	2.76E-02
+regulation of anatomical structure size (GO:0090066)	282	59	31.50	+	1.87	3.04E-05	1.12E-02
+enzyme-linked receptor protein signaling pathway (GO:0007167)	335	70	37.42	+	1.87	4.35E-06	4.25E-03
+cell junction organization (GO:0034330)	302	62	33.73	+	1.84	2.59E-05	1.04E-02
+neuron projection morphogenesis (GO:0048812)	295	60	32.95	+	1.82	4.57E-05	1.48E-02
+cell projection assembly (GO:0030031)	247	50	27.59	+	1.81	2.52E-04	4.64E-02
+cell morphogenesis involved in neuron differentiation (GO:0048667)	269	54	30.04	+	1.80	1.51E-04	3.26E-02
+plasma membrane bounded cell projection morphogenesis (GO:0120039)	300	60	33.51	+	1.79	7.43E-05	2.07E-02
+cell projection morphogenesis (GO:0048858)	304	60	33.95	+	1.77	1.16E-04	2.89E-02
+cellular component morphogenesis (GO:0032989)	361	69	40.32	+	1.71	7.40E-05	2.10E-02
+actin filament-based process (GO:0030029)	361	68	40.32	+	1.69	1.42E-04	3.14E-02
+cell morphogenesis involved in differentiation (GO:0000904)	335	63	37.42	+	1.68	2.32E-04	4.52E-02
+cell adhesion (GO:0007155)	467	87	52.16	+	1.67	2.17E-05	9.27E-03
+cell morphogenesis (GO:0000902)	432	80	48.25	+	1.66	5.65E-05	1.71E-02
+nervous system process (GO:0050877)	452	83	50.48	+	1.64	4.40E-05	1.47E-02
+regulation of plasma membrane bounded cell projection organization (GO:0120035)	421	77	47.02	+	1.64	1.19E-04	2.91E-02
+cytoskeleton organization (GO:0007010)	676	123	75.50	+	1.63	7.93E-07	2.71E-03
+regulation of cell projection organization (GO:0031344)	430	78	48.03	+	1.62	1.06E-04	2.73E-02
+positive regulation of phosphorylation (GO:0042327)	424	76	47.36	+	1.60	2.29E-04	4.59E-02
+plasma membrane bounded cell projection organization (GO:0120036)	661	118	73.83	+	1.60	2.93E-06	4.45E-03
+cell projection organization (GO:0030030)	688	122	76.84	+	1.59	3.18E-06	3.62E-03
+positive regulation of phosphorus metabolic process (GO:0010562)	470	82	52.49	+	1.56	2.53E-04	4.60E-02
+positive regulation of phosphate metabolic process (GO:0045937)	470	82	52.49	+	1.56	2.53E-04	4.54E-02
+regulation of anatomical structure morphogenesis (GO:0022603)	528	92	58.97	+	1.56	1.04E-04	2.79E-02
+head development (GO:0060322)	488	85	54.50	+	1.56	1.87E-04	3.93E-02
+neuron development (GO:0048666)	501	87	55.96	+	1.55	1.69E-04	3.62E-02
+system process (GO:0003008)	715	124	79.86	+	1.55	6.18E-06	4.68E-03
+regulation of locomotion (GO:0040012)	550	93	61.43	+	1.51	2.38E-04	4.52E-02
+neuron differentiation (GO:0030182)	611	103	68.24	+	1.51	1.29E-04	3.05E-02
+generation of neurons (GO:0048699)	656	110	73.27	+	1.50	7.75E-05	2.12E-02
+cellular response to endogenous stimulus (GO:0071495)	593	99	66.23	+	1.49	2.30E-04	4.55E-02
+response to endogenous stimulus (GO:0009719)	731	122	81.65	+	1.49	3.73E-05	1.31E-02
+cell development (GO:0048468)	896	148	100.07	+	1.48	7.58E-06	4.70E-03
+anatomical structure morphogenesis (GO:0009653)	1148	186	128.22	+	1.45	1.17E-06	2.29E-03
+cell surface receptor signaling pathway (GO:0007166)	964	156	107.67	+	1.45	1.13E-05	6.68E-03
+nervous system development (GO:0007399)	1261	202	140.84	+	1.43	7.12E-07	3.24E-03
+regulation of developmental process (GO:0050793)	1355	210	151.34	+	1.39	2.90E-06	4.95E-03
+regulation of cellular component organization (GO:0051128)	1471	218	164.30	+	1.33	2.95E-05	1.12E-02
+regulation of multicellular organismal process (GO:0051239)	1394	206	155.70	+	1.32	6.42E-05	1.91E-02
+cell differentiation (GO:0030154)	1713	250	191.32	+	1.31	1.58E-05	9.01E-03
+cellular developmental process (GO:0048869)	1733	252	193.56	+	1.30	2.05E-05	9.31E-03
+multicellular organism development (GO:0007275)	2228	323	248.84	+	1.30	6.78E-07	4.63E-03
+system development (GO:0048731)	2019	292	225.50	+	1.29	4.56E-06	3.89E-03
+signal transduction (GO:0007165)	2060	297	230.08	+	1.29	4.40E-06	4.00E-03
+cell communication (GO:0007154)	2295	330	256.33	+	1.29	1.04E-06	2.37E-03
+multicellular organismal process (GO:0032501)	2937	421	328.03	+	1.28	7.27E-09	9.92E-05
+response to chemical (GO:0042221)	1856	266	207.30	+	1.28	2.74E-05	1.07E-02
+signaling (GO:0023052)	2226	318	248.62	+	1.28	3.10E-06	3.85E-03
+regulation of biological quality (GO:0065008)	1920	273	214.44	+	1.27	3.42E-05	1.23E-02
+anatomical structure development (GO:0048856)	2573	357	287.38	+	1.24	6.87E-06	4.46E-03
+developmental process (GO:0032502)	2823	383	315.30	+	1.21	1.89E-05	8.88E-03
+cellular response to stimulus (GO:0051716)	2985	402	333.39	+	1.21	1.81E-05	9.49E-03
+response to stimulus (GO:0050896)	3616	481	403.87	+	1.19	3.57E-06	3.75E-03
+cellular component organization (GO:0016043)	3116	414	348.03	+	1.19	4.65E-05	1.48E-02
+positive regulation of cellular process (GO:0048522)	3023	396	337.64	+	1.17	2.67E-04	4.74E-02
+cellular component organization or biogenesis (GO:0071840)	3267	425	364.89	+	1.16	2.27E-04	4.63E-02
+positive regulation of biological process (GO:0048518)	3307	429	369.36	+	1.16	2.69E-04	4.70E-02
+regulation of cellular process (GO:0050794)	5417	681	605.02	+	1.13	3.07E-06	4.19E-03
+regulation of biological process (GO:0050789)	5689	704	635.40	+	1.11	1.81E-05	9.14E-03
+biological regulation (GO:0065007)	6037	740	674.27	+	1.10	2.38E-05	9.85E-03
+cellular amide metabolic process (GO:0043603)	544	32	60.76	-	.53	1.07E-04	2.69E-02
+peptide metabolic process (GO:0006518)	399	19	44.56	-	.43	4.08E-05	1.39E-02
+amide biosynthetic process (GO:0043604)	396	18	44.23	-	.41	1.84E-05	8.96E-03
+peptide biosynthetic process (GO:0043043)	330	13	36.86	-	.35	2.12E-05	9.35E-03
+translation (GO:0006412)	317	11	35.41	-	.31	5.73E-06	4.60E-03
+cytoplasmic translation (GO:0002181)	113	1	12.62	-	.08	1.22E-04	2.91E-02
