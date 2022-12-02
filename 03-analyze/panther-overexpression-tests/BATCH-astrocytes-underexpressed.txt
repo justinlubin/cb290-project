@@ -1,0 +1,17 @@
+
+
+
+
+
+Analysis Type:	PANTHER Overrepresentation Test (Released 20221013)
+Annotation Version and Release Date:	GO Ontology database DOI:  10.5281/zenodo.6799722 Released 2022-07-01
+Analyzed List:	BATCH-significant-astrocyte-underexpressed-genes.csv (Homo sapiens)
+Reference List:	BATCH-astrocyte-background-genes.csv (Homo sapiens)
+Test Type:	FISHER
+Correction:	FDR
+GO biological process complete	BATCH-astrocyte-background-genes.csv - REFLIST (8735)	BATCH-significant-astrocyte-underexpressed-genes.csv (753)	BATCH-significant-astrocyte-underexpressed-genes.csv (expected)	BATCH-significant-astrocyte-underexpressed-genes.csv (over/under)	BATCH-significant-astrocyte-underexpressed-genes.csv (fold Enrichment)	BATCH-significant-astrocyte-underexpressed-genes.csv (raw P-value)	BATCH-significant-astrocyte-underexpressed-genes.csv (FDR)
+adenylate cyclase-activating adrenergic receptor signaling pathway (GO:0071880)	8	8	.69	+	11.60	1.10E-05	4.98E-02
+vascular process in circulatory system (GO:0003018)	129	29	11.12	+	2.61	1.75E-05	4.74E-02
+circulatory system process (GO:0003013)	215	41	18.53	+	2.21	1.65E-05	5.60E-02
+peptide biosynthetic process (GO:0043043)	324	7	27.93	-	.25	6.49E-06	4.41E-02
+translation (GO:0006412)	312	5	26.90	-	.19	7.69E-07	1.04E-02

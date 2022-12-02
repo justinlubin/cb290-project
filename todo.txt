@@ -1,2 +1,0 @@
-[ ] normalize to tpm ACTUALLY combat-seq needs raw counts
-[ ] handle batch effects
