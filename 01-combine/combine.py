@@ -39,39 +39,8 @@ for i in range(1, 6):
     df = pd.DataFrame.sparse.from_spmatrix(
         counts, index=barcodes, columns=features
     )
-    # .drop(
-    #     columns=[
-    #         "RGS5",
-    #         "TBCE",
-    #         "PDE11A",
-    #         "LINC01238",
-    #         "PRSS50",
-    #         "CYB561D2",
-    #         "ATXN7",
-    #         "TXNRD3NB",
-    #         "CCDC39",
-    #         "MATR3",
-    #         "SOD2",
-    #         "POLR2J3",
-    #         "ABCF2",
-    #         "TMSB15B",
-    #         "PINX1",
-    #         "LINC01505",
-    #         "IGF2",
-    #         "HSPA14",
-    #         "EMG1",
-    #         "DIABLO",
-    #         "LINC02203",
-    #         "COG8",
-    #         "SCO2",
-    #         "H2BFS",
-    #     ]
-    # )
 
     mdf_columns = {}
-
-    # for key in healthy_metadata.columns:
-    #     mdf_columns[key] = np.repeat(None, len(barcodes))
 
     mdf_columns["Sample"] = np.repeat(i, len(barcodes))
     mdf_columns["Healthy"] = np.repeat(False, len(barcodes))

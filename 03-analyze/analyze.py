@@ -50,7 +50,6 @@ astrocytes_tle = normalized_data_tle[data_tle["GFAP"] > 1]
 de_report_data = {"statistic": [], "corrected_pvalue": [], "fold_change": []}
 num_genes = len(astrocytes_healthy.columns)
 
-# LIMITATION: t-test not appropriate for counts
 for gene in astrocytes_healthy.columns:
     result = scipy.stats.ttest_ind(
         astrocytes_healthy[gene], astrocytes_tle[gene]
@@ -81,19 +80,6 @@ ax.scatter(x_insig, y_insig, s=1, c="black", label="Not significant")
 ax.set_xlabel("log2(Fold change)")
 ax.set_ylabel("-log10(Bonferroni corrected p-value)")
 ax.legend()
-
-# Annotate genes with low corrected p-value
-
-# for gene, row in de_report[significant_idx].iterrows():
-#     x = np.log2(row["fold_change"])
-#     y = -np.log10(row["corrected_pvalue"])
-#     if y > 25:
-#         adjusted_x = x + 0.1
-#         if gene == "PTPRS":
-#             adjusted_x -= 0.9
-#         if gene == "AASS":
-#             adjusted_x -= 0.8
-#         ax.annotate(gene, (adjusted_x, y + 0.1))
 
 fig.savefig("out/BATCH-astrocyte-volcano.png")
 # fig.savefig("out/astrocyte-volcano.png")
@@ -181,5 +167,3 @@ np.savetxt(
     delimiter="\n",
     fmt="%s",
 )
-
-# %%
